@@ -3,8 +3,8 @@ W = require "wezterm"
 M = {}
 
 require "config"
-require "smartSplits"
 require "binds"
-require "status"
+require "smartSplits"
+require "tabline"
 
 return M
