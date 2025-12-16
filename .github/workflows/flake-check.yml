@@ -24,14 +24,14 @@ jobs:
 'on':
   pull_request:
     branches:
-    - main
+    - master
     paths:
     - flake.nix
     - flake.lock
     - flake/**
   push:
     branches:
-    - main
+    - master
     paths:
     - flake.nix
     - flake.lock
