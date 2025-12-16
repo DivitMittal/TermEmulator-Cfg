@@ -55,7 +55,7 @@ M.keys = {
   {
     mods = "LEADER",
     key = "f",
-    action = act.PaneSelect { mode = "SwapWithActive" },
+    action = act.Search { CaseInSensitiveString = "" },
   },
 
   -- activate copy mode or vim mode
