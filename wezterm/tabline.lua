@@ -24,7 +24,7 @@ tabline.setup {
     tabline_a = { "mode" },
     tabline_b = { "workspace" },
     tabline_x = {},
-    tabline_y = {},
+    tabline_y = { "hostname" },
     tabline_z = { "domain" },
   },
 }
