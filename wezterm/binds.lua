@@ -1,5 +1,4 @@
 local act = W.action
-local split_nav = require "smartSplits"
 
 M.leader = {
   mods = "CTRL",
@@ -65,18 +64,6 @@ M.keys = {
     key = "Enter",
     action = act.ActivateCopyMode,
   },
-
-  -- move between split panes
-  split_nav("move", "LeftArrow"),
-  split_nav("move", "RightArrow"),
-  split_nav("move", "UpArrow"),
-  split_nav("move", "DownArrow"),
-
-  -- resize split panes
-  split_nav("resize", "LeftArrow"),
-  split_nav("resize", "RightArrow"),
-  split_nav("resize", "UpArrow"),
-  split_nav("resize", "DownArrow"),
 
   -- C-S-l activates the debug overlay (implemented by default)
 }

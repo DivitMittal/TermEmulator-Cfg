@@ -1,43 +1,10 @@
--- Pane navigation and resizing b/w wezterm & vim/nvim (smart-splits.nvim plugin required)
-local function is_vim(pane)
-  -- this is set by the smart-splits.nvim plugin, and unset on ExitPre in Neovim
-  return pane:get_user_vars().IS_NVIM == "true"
-end
+local smart_splits = W.plugin.require "https://github.com/mrjones2014/smart-splits.nvim"
 
-local direction_from_key = {
-  LeftArrow = "Left",
-  RightArrow = "Right",
-  UpArrow = "Up",
-  DownArrow = "Down",
-}
+smart_splits.apply_to_config(M, {
+  direction_keys = { "LeftArrow", "DownArrow", "UpArrow", "RightArrow" },
 
-local function split_nav(resize_or_move, key)
-  return {
-    key = key,
-    mods = resize_or_move == "move" and "CTRL" or "ALT",
-
-    action = W.action_callback(function(win, pane)
-      if is_vim(pane) then
-        -- pass the keys through to vim/nvim
-        win:perform_action({
-          SendKey = {
-            key = key,
-            mods = resize_or_move == "resize" and "ALT" or "CTRL",
-          },
-        }, pane)
-      else
-        if resize_or_move == "resize" then
-          win:perform_action({
-            AdjustPaneSize = { direction_from_key[key], 3 },
-          }, pane)
-        else
-          win:perform_action({
-            ActivatePaneDirection = direction_from_key[key],
-          }, pane)
-        end
-      end
-    end),
-  }
-end
-
-return split_nav
+  modifiers = {
+    move = "CTRL", -- CTRL+Arrow to move between panes
+    resize = "ALT", -- ALT+Arrow to resize panes
+  },
+})
