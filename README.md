@@ -26,4 +26,5 @@
 ---
 This repository consists of:
 
-- A [lua](https://lua.org) [WezTerm](https://github.com/wez/wezterm) terminal emulator configuration for [OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg)
+- A pure [lua](https://lua.org) [WezTerm](https://github.com/wez/wezterm) terminal emulator configuration for [OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg)
+- [Kitty](https://github.com/kovidgoyal/kitty) terminal emulator configuration & its custom theme
