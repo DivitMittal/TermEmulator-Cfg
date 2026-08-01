@@ -37,6 +37,9 @@ in {
       # to true whenever this key is absent.
       onboarding = false;
 
+      # Avoid background version checks, which can persist future product-announcement dialogs.
+      update.version_check = false;
+
       keys.prefix = "ctrl+a";
 
       # Tab actions: mnemonic letter under the inner-mux prefix.
