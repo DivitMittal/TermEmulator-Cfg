@@ -10,6 +10,7 @@ require "agentDeck"(wezterm, config)
 require "agentCards"(wezterm, config)
 require "stackWez"(wezterm, config)
 require "smartSsh"(wezterm, config)
+require "quakeTerm"(wezterm, config)
 require "tabline"(wezterm, config)
 require "cmdPicker"(wezterm, config)
 
