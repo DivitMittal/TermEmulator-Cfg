@@ -11,5 +11,6 @@ require "agentCards"(wezterm, config)
 require "stackWez"(wezterm, config)
 require "smartSsh"(wezterm, config)
 require "tabline"(wezterm, config)
+require "cmdPicker"(wezterm, config)
 
 return config
