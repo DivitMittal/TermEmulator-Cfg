@@ -5,6 +5,7 @@ require "options"(wezterm, config)
 require "binds"(wezterm, config)
 require "smartSplits"(wezterm, config)
 require "sessions"(wezterm, config)
+require "workspacePicker"(wezterm, config)
 require "tabline"(wezterm, config)
 
 return config
