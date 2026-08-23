@@ -99,6 +99,28 @@ return function(wezterm, config)
       tabline_y = { "hostname" },
       tabline_z = { "domain" },
     },
+    -- smart_ssh.wezterm has first-class tabline.wez support: while its
+    -- fuzzy host picker is open, tabline_a temporarily shows " SSH "
+    -- instead of the mode indicator, reverting automatically on
+    -- selection/cancel. This is tabline's own extension mechanism
+    -- (temporary sections override, scoped to show/hide events) — not the
+    -- ad-hoc composition used for agent-deck/stack.wez above, since this
+    -- one doesn't touch format-tab-title/update-status at all.
+    extensions = {
+      {
+        "smart_ssh",
+        events = {
+          show = "smart_ssh.fuzzy_selector.opened",
+          hide = {
+            "smart_ssh.fuzzy_selector.canceled",
+            "smart_ssh.fuzzy_selector.selected",
+          },
+        },
+        sections = {
+          tabline_a = { " SSH " },
+        },
+      },
+    },
   }
 
   config.tab_bar_at_bottom = true
