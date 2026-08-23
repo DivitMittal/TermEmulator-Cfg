@@ -69,7 +69,7 @@
 
   # We enumerate files individually (instead of a recursive symlink tree) so
   # the nix-generated colors/cyberpunk.toml can coexist without conflicts.
-  weztermFiles = ["agentCards.lua" "agentDeck.lua" "binds.lua" "cmdPicker.lua" "options.lua" "sessions.lua" "smartSplits.lua" "smartSsh.lua" "stackWez.lua" "tabline.lua" "wezterm.lua" "workspacePicker.lua"];
+  weztermFiles = ["agentCards.lua" "agentDeck.lua" "binds.lua" "cmdPicker.lua" "options.lua" "quakeTerm.lua" "sessions.lua" "smartSplits.lua" "smartSsh.lua" "stackWez.lua" "tabline.lua" "wezterm.lua" "workspacePicker.lua"];
 in {
   programs.wezterm = {
     enable = true;
