@@ -6,6 +6,9 @@ require "binds"(wezterm, config)
 require "smartSplits"(wezterm, config)
 require "sessions"(wezterm, config)
 require "workspacePicker"(wezterm, config)
+require "agentDeck"(wezterm, config)
+require "agentCards"(wezterm, config)
+require "stackWez"(wezterm, config)
 require "tabline"(wezterm, config)
 
 return config

@@ -5,6 +5,8 @@
   base16Scheme,
   ...
 }: let
+  sources = pkgs.callPackage ../../../pkgs/_sources/generated.nix {};
+
   # Render a wezterm color scheme TOML from the shared palette.
   # See https://wezterm.org/config/appearance.html#defining-your-own-colors
   # for the schema. ansi[0..7] / brights[0..7] follow the canonical
@@ -67,7 +69,7 @@
 
   # We enumerate files individually (instead of a recursive symlink tree) so
   # the nix-generated colors/cyberpunk.toml can coexist without conflicts.
-  weztermFiles = ["binds.lua" "options.lua" "sessions.lua" "smartSplits.lua" "tabline.lua" "wezterm.lua" "workspacePicker.lua"];
+  weztermFiles = ["agentCards.lua" "agentDeck.lua" "binds.lua" "options.lua" "sessions.lua" "smartSplits.lua" "stackWez.lua" "tabline.lua" "wezterm.lua" "workspacePicker.lua"];
 in {
   programs.wezterm = {
     enable = true;
@@ -118,7 +120,17 @@ in {
     };
   };
 
-  home.packages = [pkgs.wezterm.terminfo];
+  # python3: runs wezterm-agent-cards' sidebar.py curses TUI (agentCards.lua).
+  home.packages = [pkgs.wezterm.terminfo pkgs.python3];
+
+  # wezterm-agent-cards is both a WezTerm module and a Claude Code plugin —
+  # it isn't installable via wezterm.plugin.require (WezTerm's own plugin
+  # manager), so it's vendored here at the path Claude Code plugins
+  # conventionally live at. agentCards.lua loads wezterm/init.lua from this
+  # path via dofile. The Claude Code side (enabling the plugin in
+  # ~/.claude/settings.json) is NOT managed by this repo — that file is
+  # owned by whichever repo actually manages ~/.claude (not term-nixCfg).
+  home.file.".claude/plugins/wezterm-agent-cards".source = sources.wezterm-agent-cards.src;
 
   xdg.configFile =
     (builtins.listToAttrs (map
